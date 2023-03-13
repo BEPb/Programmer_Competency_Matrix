@@ -11,7 +11,8 @@
 </p>
 <div align="center">
 
-<img src="./art/logo.png" alt="Bot logo" width="300" height="200">
+
+<img src="./art/logo.png" alt="Bot logo" width="400" height="300">
 
 # Матрица компетенстности программиста
 
