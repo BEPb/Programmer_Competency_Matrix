@@ -33,11 +33,11 @@ Of course, I didn’t reinvent the wheel and took a ready-made matrix (the most 
 Joseph [here](https://sijinjoseph.netlify.app/programmer-competency-matrix/)) and honestly answered these questions, 
 the answer was diligently put into separate files.
 
-
+#### in progress...
 
 <!--   my-table -->
-<!--  <table width="100%"> -->
-<table {width: 100%;}>
+<table width="100%">
+
 <thead>
     <tr>
     <th><h4>Computer Science</h4></th>
@@ -60,7 +60,7 @@ the answer was diligently put into separate files.
 
 <tr>
     <td>data structures</td>
-    <td>Doesn’t know the difference between Array and LinkedList</td>
+    <td background="green">Doesn’t know the difference between Array and LinkedList</td>
     <td>Able to explain and use Arrays, LinkedLists, Dictionaries etc in practical programming tasks</td>
     <td>Knows space and time tradeoffs of the basic data structures, Arrays vs LinkedLists, Able to explain
     how hashtables can be implemented and can handle collisions, Priority queues and ways to implement them etc.
@@ -595,3 +595,7 @@ algorithms, able to identify NP problems etc.</td>
 </tr>
 </tbody>
 </table>
+
+
+
+
