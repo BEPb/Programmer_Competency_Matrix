@@ -40,7 +40,7 @@ the answer was diligently put into separate files.
            <summary>Computer Science</summary>
            <p>in progress...</p>
 
-- [ ] Computer Science
+- [ ] **Data structures**
   - [x] Level 0 - Doesn’t know the difference between Array and LinkedList
   - [x] Level 1 - Able to explain and use Arrays, LinkedLists, Dictionaries etc in practical programming tasks
   - [x] Level 2 - Knows space and time tradeoffs of the basic data structures, Arrays vs LinkedLists, Able to explain
@@ -48,7 +48,7 @@ the answer was diligently put into separate files.
   - [x] Level 3 - Knowledge of advanced data structures like B-trees, binomial and fibonacci heaps, AVL/Red Black trees,
     Splay Trees, Skip Lists, tries etc.
 
-- [ ] Algorithms
+- [ ] **Algorithms**
   - [x] Level 0 - Unable to find the average of numbers in an array (It’s hard to believe but I’ve interviewed such candidates)
   - [x] Level 1 - Basic sorting, searching and data structure traversal and retrieval algorithms
   - [x] Level 2 -  Tree, Graph, simple greedy and divide and conquer algorithms, is able to understand the 
@@ -56,7 +56,7 @@ the answer was diligently put into separate files.
   - [ ] Level 3 - Able to recognize and code  dynamic programming solutions, good knowledge of graph algorithms, 
     good knowledge of numerical computation algorithms, able to identify NP problems etc.
     
-- [ ] Systems programming
+- [ ] **Systems programming**
   - [x] Level 0 - Doesn’t know what a compiler, linker or interpreter is
   - [x] Level 1 - Basic understanding of compilers, linker and interpreters. Understands what assembly code is and 
     how things work at the hardware level. Some knowledge of virtual memory and paging.
