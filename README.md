@@ -83,7 +83,7 @@ the answer was diligently put into separate files.
            <summary>Full table</summary>
            <p>
 <!--   my-table -->
-<table width="100%">
+<table width="80%">
 
 <thead>
     <tr>
