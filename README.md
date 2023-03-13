@@ -38,6 +38,10 @@ the answer was diligently put into separate files.
 <details>
            <summary>Computer Science</summary>
            <p>in progress...</p>
+<p> - [ ] uncompleted </p>
+<p> - [x] completed </p>
+
+
 </details>
 
 
