@@ -67,9 +67,6 @@ the answer was diligently put into separate files.
         Interrupts + microcode), binary code, assembly, static and dynamic linking, compilation, interpretation, JIT
         compilation, garbage collection, heap, stack, memory addressing…
 
-
-
-
 </details>
 <details>
            <summary>Software Engineering</summary>
@@ -95,11 +92,136 @@ properties etc.
   - [x] Level 2 - Has written code in TDD manner
   - [ ] Level 3 - Understands and is able to setup automated functional, load/performance and UI tests
 
-
 </details>
 <details>
            <summary>Programming</summary>
             in progress...
+ 
+- [ ] **Problem decomposition**
+  - [x] Level 0 - Only straight line code with copy paste for reuse
+  - [x] Level 1 - Able to break up problem into multiple functions
+  - [x] Level 2 -  Able to come up with reusable functions/objects that solve the overall problem
+  - [ ] Level 3 - Use of appropriate data structures and algorithms and comes up with generic/object-oriented code 
+    that encapsulate aspects of the problem that are subject to change.
+
+
+- [ ] **Systems decomposition**
+  - [x] Level 0 - Not able to think above the level of a single file/class
+  - [x] Level 1 - Able to break up problem space and design solution as long as it is within the same platform/technology
+  - [x] Level 2 - Able to design systems that span multiple technologies/platforms.
+  - [ ] Level 3 - Able to visualize and design complex systems with multiple product lines and integrations with  
+    external systems. Also should be able to design operations support systems like monitoring, reporting, fail 
+    overs etc.
+  
+- [ ] **Communication**
+  - [x] Level 0 - Cannot express thoughts/ideas to peers. Poor spelling and grammar.
+  - [x] Level 1 - Peers can understand what is being said. Good spelling and grammar.
+  - [x] Level 2 - Is able to effectively communicate with peers
+  - [ ] Level 3 - Able to understand and communicate thoughts/design/ideas/specs in a unambiguous
+        manner and adjusts communication as per the context
+  - This is an often under rated but very critical criteria
+        for judging a programmer. With the increase in outsourcing of programming tasks to places where English is not
+        the
+        native tongue this issue has become more prominent. I know of several projects that failed because the
+        programmers
+        could not understand what the intent of the communication was.
+  
+- [ ] **Code organization within a file**
+  - [x] Level 0 - no evidence of organization within a file
+  - [x] Level 1 - Methods are grouped logically or by accessibility
+  - [x] Level 2 - Code is grouped into regions and well commented with references to other source files 
+  - [ ] Level 3 - File has license header, summary, well commented, consistent white space usage. The file should look
+        beautiful.
+  
+- [ ] **Code organization across files**
+  - [x] Level 0 - No thought given to organizing code across files
+  - [x] Level 1 - Related files are grouped into a folder
+  - [x] Level 2 -  Each physical file has a unique purpose, for e.g. one class definition, one feature implementation etc.
+  - [ ] Level 3 - Code organization at a physical level closely
+        matches design and looking at file names and folder distribution provides insights into
+        design
+ 
+- [ ] **Source tree organization**
+  - [x] Level 0 - Everything in one folder
+  - [x] Level 1 - Basic separation of code into logical folders.
+  - [x] Level 2 - No circular dependencies, binaries, libs, docs, builds, third-party code all
+        organized into appropriate folders
+  - [ ] Level 3 - Physical layout of source tree matches logical hierarchy and organization.
+        The directory names and organization provide insights into the design of the system.
+  - The difference between
+        this and the previous item is in the scale of organization, source tree organization relates to the entire set
+        of
+        artifacts that define the system.
+ 
+- [ ] **Code readability**
+  - [x] Level 0 - Mono-syllable names
+  - [x] Level 1 - Good names for files, variables classes, methods etc.
+  - [x] Level 2 - No long functions, comments explaining unusual code, bug fixes,
+        code assumptions
+  - [ ] Level 3 - Code assumptions are verified using asserts, code flows naturally – no deep nesting of
+        conditionals or methods
+ 
+- [ ] **Defensive coding**
+  - [x] Level 0 - Doesn’t understand the concept
+  - [x] Level 1 - Checks all arguments and asserts critical assumptions in code
+  - [x] Level 2 - Makes sure to check return values and check for exceptions around code that can fail.
+  - [ ] Level 3 - Has his own library to help with defensive coding, writes unit tests that simulate faults
+ 
+- [ ] **Error handling**
+  - [x] Level 0 - Only codes the happy case
+  - [x] Level 1 - Basic error handling around code that can throw exceptions/generate errors
+  - [x] Level 2 -  Ensures that  error/exceptions leave program in good state, resources, connections and memory is 
+    all cleaned up  properly
+  - [ ] Level 3 - Codes to detect possible exception before, maintain consistent exception handling strategy in all
+        layers of code, come up with guidelines on exception handling for entire system.
+ 
+- [ ] **IDE**
+  - [x] Level 0 - Mostly uses IDE for text editing
+  - [x] Level 1 - Knows their way around the interface,
+        able to effectively use the IDE using menus.
+  - [x] Level 2 -  Knows keyboard shortcuts for most used operations.
+  - [ ] Level 3 - Has written custom macros
+ 
+- [ ] **API**
+  - [x] Level 0 - Needs to look up the documentation frequently
+  - [x] Level 1 - Has the most frequently used APIs in memory
+  - [x] Level 2 - Vast and In-depth knowledge of the API
+  - [ ] Level 3 - Has written libraries that sit on top of the API to simplify frequently used tasks and to fill in gaps
+        in the API
+  - E.g. of API can be Java library, .net framework or the custom API for the
+        application
+ 
+- [ ] **Frameworks**
+  - [x] Level 0 - Has not used any framework outside of the core platform
+  - [x] Level 1 - Has heard about but not used the popular frameworks available for the platform.
+  - [x] Level 2 - Has used more than one framework in a professional capacity and is well-versed with the idioms of 
+    the frameworks.
+  - [ ] Level 3 - Author of framework
+ 
+- [ ] **Requirements**
+  - [x] Level 0 - Takes the given requirements and codes to spec
+  - [x] Level 1 - Come up with questions regarding missed cases in the spec
+  - [x] Level 2 - Understand complete picture and come up with entire areas that need to be speced 
+  - [ ] Level 3 - Able to suggest better alternatives and flows to given requirements based on  experience
+ 
+- [ ] **Scripting**
+  - [x] Level 0 - No knowledge of scripting tools
+  - [x] Level 1 - Batch files/shell scripts
+  - [x] Level 2 - Perl/Python/Ruby/VBScript/Powershell
+  - [ ] Level 3 - Has written and published reusable code
+ 
+- [ ] **Database**
+  - [x] Level 0 - Thinks that Excel is a database
+  - [x] Level 1 - Knows basic database concepts, normalization, ACID, transactions and can write simple selects
+  - [x] Level 2 - Able to design good and normalized  database schemas keeping in mind the queries that’ll have to 
+    be run, proficient in use of views, stored procedures, triggers and user defined types. Knows difference 
+    between clustered and non-clustered indexes. Proficient in use of ORM tools.
+  - [ ] Level 3 - Can do basic database administration, performance optimization, index optimization, write
+        advanced select queries, able to replace cursor usage with relational sql, understands how data is stored
+        internally,  understands how indexes are stored internally, understands how databases can be mirrored, 
+    replicated etc. Understands how the two phase commit works.
+
+
 </details>
 <details>
            <summary>Experience</summary>
@@ -509,6 +631,8 @@ algorithms, able to identify NP problems etc.</td>
     </td>
     <td></td>
 </tr>
+
+
 <tr>
     <td><h4>Experience</h4></td>
     <td></td>
