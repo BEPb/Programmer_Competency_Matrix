@@ -35,9 +35,10 @@ the answer was diligently put into separate files.
 
 
 
-
+<!--   my-table -->
 <table width="80%">
-    <thead>
+
+<thead>
     <tr>
     <th><h4>Computer Science</h4></th>
     <th></th>
