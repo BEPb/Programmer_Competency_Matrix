@@ -48,8 +48,9 @@
      время выполнения операций с данными, в чем разница между массивами и связными списками в этом плане).
      Может объяснить как реализовать хэш-таблицы и как обработать коллизии. Приоритетные очереди и способы их 
      реализации и т. д.
-   - [x] Уровень 3 - Знание расширенных структур данных, таких как B-деревья, биномиальные кучи и кучи Фибоначчи, деревья AVL/Red Black,
-     Развернуть деревья, списки пропусков, попытки и т. д.
+   - [x] [Уровень 3](#Знание-расширенных-структур-данных) - Знание сложных структур данных, таких как B-дерево, 
+     Биномиальная куча и куча Фибоначчи, АВЛ-дерево, Красно-чёрное дерево, Косое дерево, Список с пропусками, 
+     TRIE-структуры и т.д. 
 
 - [ ] **Алгоритмы**
    - [x] Уровень 0 - Невозможно найти среднее число чисел в массиве (Сложно поверить, но я проводил собеседования с такими кандидатами)
@@ -555,6 +556,24 @@ class HashTable:
 ```
 
 #### Приоритетные очереди и способы их реализации
+Чтобы понять приоритетные очереди в Python, нам нужно сначала понять, что такое очередь.
+
+Очередь — это структура данных, в которой элементы хранятся в порядке «первым поступил — первым обслужен» (FIFO). 
+Это означает, что первый элемент, добавленный в очередь, будет первым элементом, который будет удален. Очереди могут 
+быть реализованы с помощью списков или очередей в Python.  
+
+Теперь приоритетная очередь — это разновидность очереди, в которой каждый элемент имеет связанный с ним приоритет. 
+Элементы удаляются из очереди в порядке их приоритета, а не в порядке их добавления. Другими словами, элемент с 
+наивысшим приоритетом удаляется первым.  
+
+В Python мы можем реализовать приоритетную очередь, используя модуль heapq, который предоставляет функции для 
+создания структур данных кучи и управления ими. Куча — это двоичная древовидная структура, в которой каждый узел 
+имеет значение приоритета, а его дочерние элементы имеют значения приоритета, которые ниже или равны родительскому 
+узлу.
+
+Модуль heapq предоставляет такие функции, как heappush для добавления элемента в очередь приоритетов, heappop для 
+удаления элемента с наивысшим приоритетом и heapreplace для замены элемента с наивысшим приоритетом новым элементом.  
+
 Прежде всего, в Python существуют несколько способов реализации приоритетных очередей:
 
 - Использование встроенного модуля heapq
@@ -579,8 +598,295 @@ while data:
     print(heapq.heappop(data))
 ```
 
+```python
+import heapq
+
+# создадим пустую кучу
+heap = []
+
+# добавить элементы в кучу со значениями приоритета
+heapq.heappush(heap, (1, 'first element'))
+heapq.heappush(heap, (3, 'third element'))
+heapq.heappush(heap, (2, 'second element'))
+
+# удалим элементы из кучи по приоритету
+print(heapq.heappop(heap))  # (1, 'first element')
+print(heapq.heappop(heap))  # (2, 'second element')
+print(heapq.heappop(heap))  # (3, 'third element')
+```
+
+### Знание расширенных структур данных
+#### B-дерево
+B-дерево - это структура данных, которая используется для хранения и упорядочения больших объемов данных. Оно 
+является сбалансированным деревом, то есть каждая ветвь содержит примерно одинаковое число элементов. Особенностью 
+B-дерева является наличие нескольких ключей на узле, что позволяет улучшить эффективность поиска данных.
+Б-дерево - это сбалансированное дерево поиска, которое предназначено для уменьшения количества обращений к диску при 
+поиске данных на жестком диске. Оно состоит из узлов разного размера, которые хранят ключи и ссылки на другие узлы. 
+
+
+Пример реализации B-дерева на языке Python:
+```python
+'''Это минимальная реализация классов BNode и BTree на Python. Она позволяет вставлять новые элементы в дерево и 
+выводить его содержимое на экран. В данной реализации используется параметр t, который определяет минимальное 
+количество ключей на узле.  
+'''
+class BNode:
+    def __init__(self, leaf=False):
+        self.leaf = leaf
+        self.keys = []
+        self.child = []
+
+
+class BTree:
+    def __init__(self, t):
+        self.root = BNode(True)
+        self.t = t
+
+    def insert(self, k):
+        root = self.root
+        if len(root.keys) == (2 * self.t) - 1:
+            new_root = BNode()
+            self.root = new_root
+            new_root.child.insert(0, root)
+            self._split(new_root, 0)
+            self._insert_non_full(new_root, k)
+        else:
+            self._insert_non_full(root, k)
+
+    def _insert_non_full(self, node, k):
+        i = len(node.keys) - 1
+        if node.leaf:
+            node.keys.append(0)
+            while i >= 0 and k < node.keys[i]:
+                node.keys[i+1] = node.keys[i]
+                i -= 1
+            node.keys[i+1] = k
+        else:
+            while i >= 0 and k < node.keys[i]:
+                i -= 1
+            if len(node.child[i+1].keys) == (2*self.t)-1:
+                self._split(node, i+1)
+                if k > node.keys[i+1]:
+                    i += 1
+            self._insert_non_full(node.child[i+1], k)
+
+    def _split(self, node, i):
+        t = self.t
+        y = node.child[i]
+        z = BNode(y.leaf)
+        node.child.insert(i+1, z)
+        node.keys.insert(i, y.keys[t-1])
+        z.keys = y.keys[t:(2*t)-1]
+        y.keys = y.keys[0:t-1]
+        z.child = y.child[t:(2*t)]
+        y.child = y.child[0:t-1]
+
+    def print_tree(self, node=None, level=0):
+        if node is None:
+            node = self.root
+
+        print('Level', level, '->', len(node.keys), end=":")
+        for i in node.keys:
+            print(i, end=' ')
+        print()
+
+        if not node.leaf:
+            for i in node.child:
+                self.print_tree(i, level + 1)
+```
 
 
 
+Вот пример реализации Б-дерева и его использования на Python:
+```python
+'''В этом коде мы определяем класс «BTreeNode», который представляет собой узел Б-дерева. Узел содержит список 
+ключей и ссылки на другие узлы. Класс «BTree» представляет собой само дерево. Метод «insert» вставляет новый ключ в 
+дерево, метод «_split_child» разделяет узел и метод «_insert_nonfull» вставляет новый ключ в неполный узел.  '''
+class BTreeNode:
+    def __init__(self, leaf=False):
+        self.leaf = leaf
+        self.keys = []
+        self.child = []
 
-  
+class BTree:
+    def __init__(self, degree):
+        self.root = BTreeNode(True)
+        self.degree = degree
+
+    def insert(self, k):
+        r = self.root
+        if len(r.keys) == (2*self.degree)-1:
+            s = BTreeNode()
+            self.root = s
+            s.child.insert(0, r)
+            self._split_child(s, 0)
+            self._insert_nonfull(s, k)
+        else:
+            self._insert_nonfull(r, k)
+
+    def _insert_nonfull(self, x, k):
+        i = len(x.keys)-1
+        if x.leaf:
+            x.keys.append(0)
+            while i >= 0 and k < x.keys[i]:
+                x.keys[i+1] = x.keys[i]
+                i -= 1
+            x.keys[i+1] = k
+        else:
+            while i >= 0 and k < x.keys[i]:
+                i -= 1
+            i += 1
+            if len(x.child[i].keys) == (2*self.degree)-1:
+                self._split_child(x, i)
+                if k > x.keys[i]:
+                    i += 1
+            self._insert_nonfull(x.child[i], k)
+
+    def _split_child(self, x, i):
+        t = self.degree
+        y = x.child[i]
+        z = BTreeNode(leaf=y.leaf)
+
+        x.child.insert(i+1, z)
+        x.keys.insert(i, y.keys[t-1])
+
+        z.keys = y.keys[t:(2*t)-1]
+        y.keys = y.keys[0:t-1]
+
+        if not y.leaf:
+            z.child = y.child[t:(2*t)]
+            y.child = y.child[0:t-1]
+
+    def search(self, k, x=None):
+        if isinstance(x, BTreeNode):
+            i = 0
+            while i < len(x.keys) and k > x.keys[i]:
+                i += 1
+            if i < len(x.keys) and k == x.keys[i]:
+                return x, i
+            elif x.leaf:
+                return None
+            else:
+                return self.search(k, x.child[i])
+        else:
+            return self.search(k, self.root)
+
+    def __str__(self):
+        r = self.root
+        return self._to_string(r)
+
+    def _to_string(self, x, lvl=0):
+        ret = " " * lvl
+        if x is None:
+            return ret + "None\n"
+        else:
+            if x.leaf:
+                ret += "Leaf -> "
+            else:
+                ret += "Node -> "
+            ret += str(x.keys) + "\n"
+            for i in range(len(x.child)):
+                ret += self._to_string(x.child[i], lvl + 1)
+            return ret
+
+'''В этом примере мы создаем Б-дерево с минимальной степенью 3 и вставляем несколько ключей в дерево. Затем мы 
+выполняем поиск ключей в дереве с помощью метода «search». Если ключ находится в дереве, метод «search» возвращает 
+узел и индекс ключа в этом узле. Если ключ не найден, метод возвращает значение None.   
+'''
+t = BTree(3)
+t.insert(8)
+t.insert(18)
+t.insert(2)
+t.insert(1)
+t.insert(20)
+t.insert(50)
+t.insert(23)
+
+print(t.search(2))
+print(t.search(23))
+print(t.search(300))
+```
+
+#### Биномиальная куча 
+Биномиальная куча (binomial heap) - это структура данных, которая представляет собой лес биномиальных деревьев. Она 
+позволяет эффективно добавлять, удалять и обновлять элементы, а также искать минимальный элемент. 
+
+Биномиальный лес – это семейство биномиальных деревьев.
+
+Биномиальное дерево высоты h = 0 состоит из одной единственной вершины, биномиальное дерево Bk высоты h = k 
+образуется присоединением биномиального дерева высоты k-1 к корню другого биномиального дерева высоты k-1. Ниже 
+показаны биномиальные деревья B0, B1, B2, B3 и B4.  
+
+<img src="./art/binom_ex_1.jpg" alt="Bot logo" width="400" height="300">
+
+Ниже приведена простая реализация биномиальной кучи на языке Python.
+```python
+'''В этой реализации биномиальной кучи используется вложенный класс Node, который представляет вершину биномиального 
+дерева. Куча хранится как односвязный список биномиальных деревьев в порядке убывания их размеров. Операция 
+объединения двух биномиальных деревьев происходит с помощью рекурсивного объединения их корневых списков. Операция 
+удаления минимального элемента происходит поиском минимального узла в списке и его последующим удалением.   
+'''
+class BinomialHeap:
+    class Node:
+        def __init__(self, key, value):
+            self.key = key
+            self.value = value
+            self.degree = 0
+            self.parent = None
+            self.child = None
+            self.sibling = None
+    
+    def __init__(self):
+        self.head = None
+    
+    def push(self, key, value):
+        new_node = self.Node(key, value)
+        self.head = self._merge_lists(self.head, new_node)
+    
+    def pop(self):
+        if not self.head:
+            return None
+        
+        min_node = self.head
+        prev_node = None
+        curr_node = min_node
+        
+        while curr_node.sibling:
+            if curr_node.sibling.key < min_node.key:
+                min_node = curr_node.sibling
+                prev_node = curr_node
+            curr_node = curr_node.sibling
+        
+        if prev_node:
+            prev_node.sibling = min_node.sibling
+        elif min_node == self.head:
+            self.head = min_node.sibling
+        
+        child_head = min_node.child
+        if child_head:
+            child_head.parent = None
+            curr_node = child_head
+            while curr_node:
+                next_node = curr_node.sibling
+                curr_node.sibling = curr_node.parent = None
+                self.head = self._merge_lists(self.head, curr_node)
+                curr_node = next_node
+        
+        return min_node.value
+    
+    def peek(self):
+        return self.head.value if self.head else None
+    
+    def _merge_lists(self, head1, head2):
+        if not head1:
+            return head2
+        if not head2:
+            return head1
+        
+        if head1.key < head2.key:
+            head1.sibling = self._merge_lists(head1.sibling, head2)
+            return head1
+        else:
+            head2.sibling = self._merge_lists(head2.sibling, head1)
+            return head2
+```
