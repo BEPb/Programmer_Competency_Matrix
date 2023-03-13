@@ -36,7 +36,7 @@ the answer was diligently put into separate files.
 
 
 <!--   my-table -->
-<table width="80%">
+<table width="100%">
 
 <thead>
     <tr>
