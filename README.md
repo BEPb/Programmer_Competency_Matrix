@@ -35,7 +35,7 @@ the answer was diligently put into separate files.
 
 
 
-<table>
+<table style="width:800px">
     <thead>
     <tr>
     <th><h4 style="width:70px">Computer Science</h4></th>
