@@ -35,6 +35,16 @@ the answer was diligently put into separate files.
 
 #### in progress...
 
+<details>
+           <summary>Computer Science</summary>
+           <p>in progress...</p>
+</details>
+
+
+
+<details>
+           <summary>Full table</summary>
+           <p>
 <!--   my-table -->
 <table width="100%">
 
@@ -595,6 +605,9 @@ algorithms, able to identify NP problems etc.</td>
 </tr>
 </tbody>
 </table>
+</p>
+         </details>
+
 
 
 
