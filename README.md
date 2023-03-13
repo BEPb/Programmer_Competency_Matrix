@@ -40,78 +40,32 @@ the answer was diligently put into separate files.
            <summary>Computer Science</summary>
            <p>in progress...</p>
 
-:white_check_mark:
-:black_square_button:
-- [ ] uncompleted
-- [x] completed
-
-<table width="80%">
-
-<thead>
-    <tr>
-    <th><h4>Computer Science</h4></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th></tr>
-</thead>
-
-<tbody>
-<tr>
-    <td></td>
-    <td> (Level 0)</td>
-    <td> (Level 1)</td>
-    <td> (Level 2)</td>
-    <td> (Level 3)</td>
-    <td>Comments</td>
-</tr>
-
-<tr>
-    <td>data structures</td>
-    <td background="green">Doesn’t know the difference between Array and LinkedList</td>
-    <td>Able to explain and use Arrays, LinkedLists, Dictionaries etc in practical programming tasks</td>
-    <td>Knows space and time tradeoffs of the basic data structures, Arrays vs LinkedLists, Able to explain
+- [ ] Computer Science
+  - [x] Level 0 - Doesn’t know the difference between Array and LinkedList
+  - [x] Level 1 - Able to explain and use Arrays, LinkedLists, Dictionaries etc in practical programming tasks
+  - [x] Level 2 - Knows space and time tradeoffs of the basic data structures, Arrays vs LinkedLists, Able to explain
     how hashtables can be implemented and can handle collisions, Priority queues and ways to implement them etc.
-    </td>
-    <td>Knowledge of advanced data structures like B-trees, binomial and fibonacci heaps, AVL/Red Black trees,
-    Splay Trees, Skip Lists, tries etc.</td>
-    <td></td>
-</tr>
+  - [x] Level 3 - Knowledge of advanced data structures like B-trees, binomial and fibonacci heaps, AVL/Red Black trees,
+    Splay Trees, Skip Lists, tries etc.
 
-<tr>
-    <td>algorithms</td>
-<td>Unable to find the average of numbers in an array (It’s hard to believe but I’ve interviewed such candidates)</td>
-<td>Basic sorting, searching and data structure traversal and retrieval algorithms</td>
-<td>Tree, Graph, simple greedy and divide and conquer
-algorithms, is able to understand the relevance of the levels of this matrix.</td>
-<td>Able to recognize and code
-dynamic programming solutions, good knowledge of graph algorithms, good knowledge of numerical computation
-algorithms, able to identify NP problems etc.</td>
-<td></td>
-</tr>
-
-<tr><>
-    <td>systems programming</td>
-    <td>Doesn’t know
-        what a compiler, linker or interpreter is
-    </td>
-    <td>Basic understanding of compilers, linker and interpreters.
-        Understands what assembly code is and how things work at the hardware level. Some knowledge of virtual memory
-        and
-        paging.
-    </td>
-    <td>Understands kernel mode vs. user mode, multi-threading, synchronization primitives and how they’re
+- [ ] Algorithms
+  - [x] Level 0 - Unable to find the average of numbers in an array (It’s hard to believe but I’ve interviewed such candidates)
+  - [x] Level 1 - Basic sorting, searching and data structure traversal and retrieval algorithms
+  - [x] Level 2 -  Tree, Graph, simple greedy and divide and conquer algorithms, is able to understand the 
+    relevance of the levels of this matrix.
+  - [ ] Level 3 - Able to recognize and code  dynamic programming solutions, good knowledge of graph algorithms, 
+    good knowledge of numerical computation algorithms, able to identify NP problems etc.
+    
+- [ ] Systems programming
+  - [x] Level 0 - Doesn’t know what a compiler, linker or interpreter is
+  - [x] Level 1 - Basic understanding of compilers, linker and interpreters. Understands what assembly code is and 
+    how things work at the hardware level. Some knowledge of virtual memory and paging.
+  - [ ] Level 2 -  Understands kernel mode vs. user mode, multi-threading, synchronization primitives and how they’re
         implemented, able to read assembly code. Understands how networks work, understanding of network protocols and
         socket level programming.
-    </td>
-    <td>Understands the entire programming stack, hardware (CPU + Memory + Cache +
+  - [ ] Level 3 - Understands the entire programming stack, hardware (CPU + Memory + Cache +
         Interrupts + microcode), binary code, assembly, static and dynamic linking, compilation, interpretation, JIT
         compilation, garbage collection, heap, stack, memory addressing…
-    </td>
-    <td></td></tr>
-</table>
-
 
 
 
@@ -133,7 +87,11 @@ algorithms, able to identify NP problems etc.</td>
 <details>
            <summary>Knowledge</summary>
             in progress...
-
+- [ ] ...
+  - [x] Level 0 - 
+  - [x] Level 1 - 
+  - [x] Level 2 -  
+  - [ ] Level 3 - 
 </details>
 
 
