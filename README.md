@@ -66,10 +66,15 @@ the answer was diligently put into separate files.
 <details>
            <summary>Knowledge</summary>
             in progress...
-                <details>
-                           <summary>temppp</summary>
-                            in progress...
-                </details>
+<p>
+
+<details>
+           <summary>temppp</summary>
+            in progress...
+</details>
+
+</p>
+
 </details>
 
 
