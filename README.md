@@ -36,7 +36,7 @@ the answer was diligently put into separate files.
 
 
 
-<table style="width:800px">
+<table width="80%">
     <thead>
     <tr>
     <th><h4>Computer Science</h4></th>
