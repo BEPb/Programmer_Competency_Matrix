@@ -890,3 +890,125 @@ class BinomialHeap:
             head2.sibling = self._merge_lists(head2.sibling, head1)
             return head2
 ```
+
+#### Фибоначчиева куча 
+Фибоначчиева куча (англ. Fibonacci heap) — структура данных, представляющая собой набор деревьев, упорядоченных в 
+соответствии со свойством неубывающей пирамиды. Фибоначчиевы кучи были введены Майклом Фредманом и Робертом 
+Тарьяном в 1984 году.
+
+Структура является  реализацией абстрактного типа данных «Очередь с приоритетом», и замечательна тем, что операции, 
+в которых не требуется удаление, имеют амортизированное время работы. Кроме стандартных операций INSERT, MIN, 
+DECREASE-KEY, фибоначчиева куча позволяет за время равное время выполнять операцию UNION слияния двух куч.
+
+```python
+'''Вы можете использовать функцию fibonacci_heap() для создания новой кучи Фибоначчи. Затем вы можете выполнить 
+операции вставки и удаления элементов из кучи. Например, для вставки элемента используйте метод insert(val), а для 
+извлечения минимального элемента - метод extract_min().  '''
+def fibonacci_heap():
+    class Node:
+        def __init__(self, val):
+            self.val = val
+            self.child = None
+            self.left = None
+            self.right = None
+            self.marked = False
+            self.degree = 0
+            self.parent = None
+            
+        def __str__(self):
+            return str(self.val)
+        
+    class FibonacciHeap:
+        def __init__(self):
+            self.min = None
+            self.trees = []
+            self.num_nodes = 0
+            
+        def insert(self, val):
+            node = Node(val)
+            if self.min == None:
+                self.min = node
+            else:
+                self._add_to_root_list(node)
+                if node.val < self.min.val:
+                    self.min = node
+            self.num_nodes += 1
+        
+        def _add_to_root_list(self, node):
+            node.left = None
+            node.right = None
+            self.trees.append(node)
+            
+        def extract_min(self):
+            z = self.min
+            if z != None:
+                for c in z.child:
+                    self._add_to_root_list(c)
+                    c.parent = None
+                self.trees.remove(z)
+                self.num_nodes -= 1
+                if z == z.right:
+                    self.min = None
+                else:
+                    self.min = z.right
+                    self._consolidate()
+            return z
+        
+        def _consolidate(self):
+            A = [None] * self.num_nodes
+            for i in range(len(self.trees)):
+                x = self.trees[i]
+                d = x.degree
+                while A[d] != None:
+                    y = A[d]
+                    if x.val > y.val:
+                        temp = x
+                        x = y
+                        y = temp
+                    self._fib_heap_link(y, x)
+                    A[d] = None
+                    d += 1
+                A[d] = x
+            self.min = None
+            for i in range(len(A)):
+                if A[i] != None:
+                    if self.min == None:
+                        self.trees = []
+                        self.min = A[i]
+                    else:
+                        self._add_to_root_list(A[i])
+                        if A[i].val < self.min.val:
+                            self.min = A[i]
+
+        def _fib_heap_link(self, y, x):
+            self.trees.remove(y)
+            y.left = y
+            y.right = y
+            y.parent = x
+            x.degree += 1
+            if x.child == None:
+                x.child = y
+            else:
+                self._add_to_child_list(x.child, y)
+            y.marked = False
+            
+        def _add_to_child_list(self, parent, child):
+            child.left = parent.left
+            child.right = parent
+            parent.left.right = child
+            parent.left = child
+            
+    return FibonacciHeap()
+
+'''Например, чтобы создать новую кучу Фибоначчи и вставить в нее элементы 5, 3 и 8'''
+heap = fibonacci_heap()
+
+heap.insert(5)
+heap.insert(3)
+heap.insert(8)
+
+'''А затем, чтобы извлечь минимальный элемент из кучи, выполните следующую команду'''
+min = heap.extract_min()
+print(min)
+'''Результатом этой команды будет строка "3", так как 3 является минимальным элементом в куче.'''
+```
