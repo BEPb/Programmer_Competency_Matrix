@@ -39,10 +39,11 @@ the answer was diligently put into separate files.
 <details>
            <summary>Computer Science</summary>
            <p>in progress...</p>
+            
 
-| 	                                    | Level 0                                                      | 	Level 1	                                                                                       | Level 2	   | Level 3   |
-|--------------------------------------|--------------------------------------------------------------|-------------------------------------------------------------------------------------------------|------------|-----------|
-| :white_check_mark:  Data structures	 | Doesn’t know the difference between Array and Linked List | 	Able to explain and use Arrays, LinkedLists, Dictionaries etc in practical programming tasks  | Knows space and time tradeoffs of the basic data structures, Arrays vs LinkedLists, Able to explain how hashtables can be implemented and can handle collisions, Priority queues and ways to implement them etc. | Knowledge of advanced data structures like B-trees, binomial and fibonacci heaps, AVL/Red Black trees, Splay Trees, Skip Lists, tries etc. |
+| 	                                     | Level 0                                                      | 	Level 1	                                                                                                        | Level 2	                                                                                                                                                                                                                            | Level 3                                                                                                                                                       |
+|---------------------------------------|--------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| :black_square_button:  Data structures	 | :white_check_mark: Doesn’t know the difference between Array and Linked List | 	:white_check_mark: Able to explain and use Arrays, LinkedLists, Dictionaries etc in practical programming tasks | :white_check_mark: Knows space and time tradeoffs of the basic data structures, Arrays vs LinkedLists, Able to explain how hashtables can be implemented and can handle collisions, Priority queues and ways to implement them etc. | :white_check_mark: Knowledge of advanced data structures like B-trees, binomial and fibonacci heaps, AVL/Red Black trees, Splay Trees, Skip Lists, tries etc. |
 
 
 - [ ] uncompleted
@@ -61,9 +62,14 @@ the answer was diligently put into separate files.
            <summary>Experience</summary>
             in progress...
 </details>
+
 <details>
            <summary>Knowledge</summary>
             in progress...
+                <details>
+                           <summary>temppp</summary>
+                            in progress...
+                </details>
 </details>
 
 
