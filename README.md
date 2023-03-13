@@ -11,7 +11,9 @@
 </p>
 <div align="center">
 
+
 <img src="./art/logo.png" alt="Bot logo" width="300" height="200">
+
 
 # Programmer Competency Matrix
 
