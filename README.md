@@ -35,16 +35,41 @@ the answer was diligently put into separate files.
 
 #### in progress...
 
+
 <details>
            <summary>Computer Science</summary>
            <p>in progress...</p>
-<p> - [ ] uncompleted </p>
-<p> - [x] completed </p>
 
+- [ ] uncompleted
+- [x] completed
 
+</details>
+<details>
+           <summary>Software Engineering</summary>
+            in progress...
+</details>
+<details>
+           <summary>Programming</summary>
+            in progress...
+</details>
+<details>
+           <summary>Experience</summary>
+            in progress...
+</details>
+<details>
+           <summary>Knowledge</summary>
+            in progress...
 </details>
 
 
+
+
+
+
+
+
+
+---
 
 <details>
            <summary>Full table</summary>
