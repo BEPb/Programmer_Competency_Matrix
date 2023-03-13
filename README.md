@@ -226,17 +226,95 @@ properties etc.
 <details>
            <summary>Experience</summary>
             in progress...
+
+- [ ] **Languages with professional experience**
+  - [x] Level 0 - Imperative or Object Oriented
+  - [x] Level 1 - Imperative, Object-Oriented and declarative (SQL), added bonus if they understand static vs dynamic
+        typing, weak vs strong typing and static inferred types
+  - [x] Level 2 - Functional, added bonus if they understand lazy
+        evaluation, currying, continuations
+  - [ ] Level 3 - Concurrent (Erlang, Oz) and Logic (Prolog)
+
+ 
+- [ ] **Platforms with professional
+        experience**
+  - [x] Level 0 - 1
+  - [x] Level 1 - 2-3
+  - [x] Level 2 - 4-5
+  - [ ] Level 3 - 6+
+ 
+- [ ] **Years of professional experience**
+  - [x] Level 0 - 1
+  - [x] Level 1 - 2-5
+  - [x] Level 2 - 6-9
+  - [ ] Level 3 - 10+
+ 
+- [ ] **Domain knowledge**
+  - [x] Level 0 - No knowledge of the domain
+  - [x] Level 1 - Has worked on at least one product in the domain.
+  - [x] Level 2 - Has worked on multiple products in the same domain.
+  - [ ] Level 3 - Domain expert. Has designed and implemented several products/solutions in the
+        domain. Well versed with standard terms, protocols used in the domain.
+
 </details>
 
 <details>
            <summary>Knowledge</summary>
             in progress...
 
-- [ ] ...
-  - [x] Level 0 - 
-  - [x] Level 1 - 
-  - [x] Level 2 -  
-  - [ ] Level 3 - 
+- [ ] **Tool knowledge**
+  - [x] Level 0 - Limited to primary IDE (VS.Net, Eclipse etc.)
+  - [x] Level 1 - Knows about some alternatives to popular and standard tools.
+  - [x] Level 2 - Good knowledge of editors, debuggers, IDEs, open source alternatives etc. etc. For e.g.
+        someone who knows most of the tools from Scott Hanselman’s power tools list. Has used ORM tools.
+  - [ ] Level 3 - Has actually written tools and scripts, added bonus if they’ve been published.
+ 
+- [ ] **Languages exposed to**
+  - [x] Level 0 - Imperative or Object Oriented
+  - [x] Level 1 - Imperative, Object-Oriented and declarative (SQL), added
+        bonus if they understand static vs dynamic typing, weak vs strong typing and static inferred
+        types
+  - [x] Level 2 -  Functional, added bonus if they understand lazy evaluation, currying, continuations
+  - [ ] Level 3 - Concurrent
+        (Erlang, Oz) and Logic (Prolog)
+ 
+- [ ] **Codebase knowledge**
+  - [x] Level 0 - Has never looked at the codebase
+  - [x] Level 1 - Basic knowledge of the code layout and how to build the system
+  - [x] Level 2 - Good working knowledge of code base, has implemented several bug fixes and maybe some small features.
+  - [ ] Level 3 - Has implemented multiple big  features in the codebase and can easily visualize the changes 
+    required for most features or bug fixes.
+ 
+- [ ] **Knowledge of upcoming technologies**
+  - [x] Level 0 - Has not heard of the upcoming technologies
+  - [x] Level 1 - Has heard of upcoming technologies in the field
+  - [x] Level 2 - Has downloaded the alpha preview/CTP/beta and read some articles/manuals
+  - [ ] Level 3 - Has played with the previews and has actually built something with it and as a bonus shared that 
+    with everyone else
+ 
+- [ ] **Platform internals**
+  - [x] Level 0 - Zero knowledge of platform internals
+  - [x] Level 1 - Has basic knowledge of how the platform works internally
+  - [x] Level 2 - Deep knowledge of platform internals and can visualize how the platform takes the program and
+        converts it into executable code.
+  - [ ] Level 3 - Has written tools to enhance or provide information on platform internals.
+        For e.g. disassemblers, decompilers, debuggers etc.
+ 
+- [ ] **Books**
+  - [x] Level 0 - Unleashed series, 21 days series, 24 hour series, dummies series…
+  - [x] Level 1 - Code Complete, Don’t Make me Think, Mastering Regular Expressions
+  - [x] Level 2 - Design Patterns, Peopleware, Programming Pearls, Algorithm Design Manual, Pragmatic Programmer,
+        Mythical Man month
+  - [ ] Level 3 - Structure and Interpretation of Computer Programs, Concepts Techniques, Models of
+        Computer Programming, Art of Computer Programming, Database systems , by C. J Date, Thinking Forth, Little
+        Schemer
+ 
+- [ ] **Blogs**
+  - [x] Level 0 - Has heard of them but never got the time.
+  - [x] Level 1 - Reads tech/programming/software engineering blogs and listens to podcasts regularly.
+  - [x] Level 2 - Maintains a link blog with some collection of useful articles and tools that he/she has collected
+  - [ ] Level 3 - Maintains a blog in which personal insights and thoughts on programming are shared
+ 
 </details>
 
 
@@ -701,6 +779,8 @@ algorithms, able to identify NP problems etc.</td>
     </td>
     <td></td>
 </tr>
+
+
 <tr>
     <td><h4>Knowledge</h4></td>
     <td></td>
