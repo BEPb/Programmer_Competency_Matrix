@@ -36,8 +36,8 @@ the answer was diligently put into separate files.
 
 
 <!--   my-table -->
-<table width="100%">
-
+<!--  <table width="100%"> -->
+<table {width: 100%;}>
 <thead>
     <tr>
     <th><h4>Computer Science</h4></th>
