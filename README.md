@@ -39,13 +39,9 @@ the answer was diligently put into separate files.
 <details>
            <summary>Computer Science</summary>
            <p>in progress...</p>
-            
 
-| 	                                     | Level 0                                                      | 	Level 1	                                                                                                        | Level 2	                                                                                                                                                                                                                            | Level 3                                                                                                                                                       |
-|---------------------------------------|--------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| :black_square_button:  Data structures	 | :white_check_mark: Doesn’t know the difference between Array and Linked List | 	:white_check_mark: Able to explain and use Arrays, LinkedLists, Dictionaries etc in practical programming tasks | :white_check_mark: Knows space and time tradeoffs of the basic data structures, Arrays vs LinkedLists, Able to explain how hashtables can be implemented and can handle collisions, Priority queues and ways to implement them etc. | :white_check_mark: Knowledge of advanced data structures like B-trees, binomial and fibonacci heaps, AVL/Red Black trees, Splay Trees, Skip Lists, tries etc. |
-
-
+:white_check_mark:
+:black_square_button:
 - [ ] uncompleted
 - [x] completed
 
@@ -82,7 +78,43 @@ the answer was diligently put into separate files.
     Splay Trees, Skip Lists, tries etc.</td>
     <td></td>
 </tr>
+
+<tr>
+    <td>algorithms</td>
+<td>Unable to find the average of numbers in an array (It’s hard to believe but I’ve interviewed such candidates)</td>
+<td>Basic sorting, searching and data structure traversal and retrieval algorithms</td>
+<td>Tree, Graph, simple greedy and divide and conquer
+algorithms, is able to understand the relevance of the levels of this matrix.</td>
+<td>Able to recognize and code
+dynamic programming solutions, good knowledge of graph algorithms, good knowledge of numerical computation
+algorithms, able to identify NP problems etc.</td>
+<td></td>
+</tr>
+
+<tr><>
+    <td>systems programming</td>
+    <td>Doesn’t know
+        what a compiler, linker or interpreter is
+    </td>
+    <td>Basic understanding of compilers, linker and interpreters.
+        Understands what assembly code is and how things work at the hardware level. Some knowledge of virtual memory
+        and
+        paging.
+    </td>
+    <td>Understands kernel mode vs. user mode, multi-threading, synchronization primitives and how they’re
+        implemented, able to read assembly code. Understands how networks work, understanding of network protocols and
+        socket level programming.
+    </td>
+    <td>Understands the entire programming stack, hardware (CPU + Memory + Cache +
+        Interrupts + microcode), binary code, assembly, static and dynamic linking, compilation, interpretation, JIT
+        compilation, garbage collection, heap, stack, memory addressing…
+    </td>
+    <td></td></tr>
 </table>
+
+
+
+
 
 </details>
 <details>
