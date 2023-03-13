@@ -49,6 +49,41 @@ the answer was diligently put into separate files.
 - [ ] uncompleted
 - [x] completed
 
+<table width="80%">
+
+<thead>
+    <tr>
+    <th><h4>Computer Science</h4></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th></tr>
+</thead>
+
+<tbody>
+<tr>
+    <td></td>
+    <td> (Level 0)</td>
+    <td> (Level 1)</td>
+    <td> (Level 2)</td>
+    <td> (Level 3)</td>
+    <td>Comments</td>
+</tr>
+
+<tr>
+    <td>data structures</td>
+    <td background="green">Doesn’t know the difference between Array and LinkedList</td>
+    <td>Able to explain and use Arrays, LinkedLists, Dictionaries etc in practical programming tasks</td>
+    <td>Knows space and time tradeoffs of the basic data structures, Arrays vs LinkedLists, Able to explain
+    how hashtables can be implemented and can handle collisions, Priority queues and ways to implement them etc.
+    </td>
+    <td>Knowledge of advanced data structures like B-trees, binomial and fibonacci heaps, AVL/Red Black trees,
+    Splay Trees, Skip Lists, tries etc.</td>
+    <td></td>
+</tr>
+</table>
+
 </details>
 <details>
            <summary>Software Engineering</summary>
