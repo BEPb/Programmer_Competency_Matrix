@@ -74,6 +74,28 @@ the answer was diligently put into separate files.
 <details>
            <summary>Software Engineering</summary>
             in progress...
+
+- [ ] **Source code version control**
+  - [x] Level 0 - Folder backups by date
+  - [x] Level 1 - VSS and beginning CVS/SVN user
+  - [x] Level 2 -  Proficient in using CVS and SVN features. Knows how to branch and merge, use patches setup repository 
+properties etc.
+  - [ ] Level 3 - Knowledge of  distributed VCS systems. Has tried out Bzr/Mercurial/Darcs/Git
+
+- [ ] **Build  automation**
+  - [x] Level 0 - Only knows how to build from IDE
+  - [x] Level 1 - Knows how to build the system from the command line
+  - [x] Level 2 - Can setup a script to build the basic system
+  - [ ] Level 3 - Can setup a script to build the system and also documentation, installers, generate release notes 
+    and tag the code in source control
+
+- [ ] **Automated testing**
+  - [x] Level 0 - Thinks that all testing is the job of the tester
+  - [x] Level 1 - Has written automated unit tests and comes up with good unit test cases for the code that is being written
+  - [x] Level 2 - Has written code in TDD manner
+  - [ ] Level 3 - Understands and is able to setup automated functional, load/performance and UI tests
+
+
 </details>
 <details>
            <summary>Programming</summary>
@@ -87,6 +109,7 @@ the answer was diligently put into separate files.
 <details>
            <summary>Knowledge</summary>
             in progress...
+
 - [ ] ...
   - [x] Level 0 - 
   - [x] Level 1 - 
@@ -235,6 +258,9 @@ algorithms, able to identify NP problems etc.</td>
     </td>
     <td></td>
 </tr>
+
+
+
 <tr>
     <td><h4>Programming</h4></td>
     <td></td>
