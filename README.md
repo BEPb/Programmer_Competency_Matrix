@@ -35,10 +35,11 @@ the answer was diligently put into separate files.
 
 
 
+
 <table style="width:800px">
     <thead>
     <tr>
-    <th><h4 style="width:70px">Computer Science</h4></th>
+    <th><h4>Computer Science</h4></th>
     <th></th>
     <th></th>
     <th></th>
