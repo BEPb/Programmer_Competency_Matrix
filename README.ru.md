@@ -1013,3 +1013,600 @@ min = heap.extract_min()
 print(min)
 '''Результатом этой команды будет строка "3", так как 3 является минимальным элементом в куче.'''
 ```
+
+#### АВЛ-дерево
+АВЛ-дерево — сбалансированное по высоте двоичное дерево поиска: для каждой его вершины высота её двух поддеревьев 
+различается не более чем на 1, имеет высокую эффективность при выполнении операций поиска, 
+добавления и удаления элементов.
+
+АВЛ — аббревиатура, образованная первыми буквами создателей (советских учёных) Адельсон-Вельского Георгия 
+Максимовича и Ландиса Евгения Михайловича. 
+
+<img src="./art/AVLtreef.svg.png" alt="avltree">
+
+Для создания AVL-дерева в Python мы используем классы. Каждый узел дерева определяется в виде объекта с тремя 
+свойствами: значение (value), левым (left) и правым (right) потомком. 
+
+Код создания класса для AVL-дерева может выглядеть следующим образом:
+```python
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+        self.height = 1
+    
+
+class AVL_Tree:
+    def __init__(self):
+        self.root = None
+    
+    # Метод для вставки нового элемента в дерево
+    def insert(self, value):
+        self.root = self._insert(self.root, value)
+
+    def _insert(self, node, value):
+        if not node:
+            return Node(value)
+        elif value < node.value:
+            node.left = self._insert(node.left, value)
+        else:
+            node.right = self._insert(node.right, value)
+
+        node.height = 1 + max(self._height(node.left), self._height(node.right))
+
+        balance = self._balance(node)
+
+        if balance > 1 and value < node.left.value:
+            return self._rotate_right(node)
+
+        if balance < -1 and value > node.right.value:
+            return self._rotate_left(node)
+
+        if balance > 1 and value > node.left.value:
+            node.left = self._rotate_left(node.left)
+            return self._rotate_right(node)
+
+        if balance < -1 and value < node.right.value:
+            node.right = self._rotate_right(node.right)
+            return self._rotate_left(node)
+
+        return node
+
+    # Метод для удаления элемента из дерева
+    def delete(self, value):
+        self.root = self._delete(self.root, value)
+
+    def _delete(self, node, value):
+        if not node:
+            return node
+
+        elif value < node.value:
+            node.left = self._delete(node.left, value)
+
+        elif value > node.value:
+            node.right = self._delete(node.right, value)
+
+        else:
+            if node.left is None:
+                temp = node.right
+                node = None
+                return temp
+
+            elif node.right is None:
+                temp = node.left
+                node = None
+                return temp
+
+            temp = self._min_value_node(node.right)
+            node.value = temp.value
+            node.right = self._delete(node.right, temp.value)
+
+        if node is None:
+            return node
+
+        node.height = 1 + max(self._height(node.left), self._height(node.right))
+
+        balance = self._balance(node)
+
+        if balance > 1 and self._balance(node.left) >= 0:
+            return self._rotate_right(node)
+
+        if balance < -1 and self._balance(node.right) <= 0:
+            return self._rotate_left(node)
+
+        if balance > 1 and self._balance(node.left) < 0:
+            node.left = self._rotate_left(node.left)
+            return self._rotate_right(node)
+
+        if balance < -1 and self._balance(node.right) > 0:
+            node.right = self._rotate_right(node.right)
+            return self._rotate_left(node)
+
+        return node
+
+    # Метод для проверки сбалансированности дерева
+    def _balance(self, node):
+        if not node:
+            return 0
+
+        return self._height(node.left) - self._height(node.right)
+
+    # Метод для нахождения высоты дерева
+    def _height(self, node):
+        if not node:
+            return 0
+
+        return node.height
+
+    # Метод для выполнения левого поворота
+    def _rotate_left(self, node):
+        y = node.right
+        z = y.left
+
+        y.left = node
+        node.right = z
+
+        node.height = 1 + max(self._height(node.left), self._height(node.right))
+        y.height = 1 + max(self._height(y.left), self._height(y.right))
+
+        return y
+
+    # Метод для выполнения правого поворота
+    def _rotate_right(self, node):
+        y = node.left
+        z = y.right
+
+        y.right = node
+        node.left = z
+
+        node.height = 1 + max(self._height(node.left), self._height(node.right))
+        y.height = 1 + max(self._height(y.left), self._height(y.right))
+
+        return y
+
+    # Метод для нахождения узла с минимальным значением
+    def _min_value_node(self, node):
+        current = node
+
+        while current.left is not None:
+            current = current.left
+
+        return current
+
+```
+
+#### Красно-чёрное дерево 
+Красно-чёрное дерево (англ. red-black tree, RB tree) — один из видов самобалансирующихся двоичных деревьев поиска, 
+гарантирующих логарифмический рост высоты дерева от числа узлов и позволяющее быстро выполнять основные операции 
+дерева поиска: добавление, удаление и поиск узла. Сбалансированность достигается за счёт введения дополнительного 
+атрибута узла дерева — «цвета». Этот атрибут может принимать одно из двух возможных значений — «чёрный» или 
+«красный».    
+
+Изобретателем красно-чёрного дерева считают немца Рудольфа Байера. Название «красно-чёрное дерево» структура данных 
+получила в статье Л. Гимбаса и Р. Седжвика (1978). По словам Гимбаса, они использовали ручки двух цветов. По 
+словам Седжвика, красный цвет лучше всех смотрелся на лазерном принтере.
+
+Красно-чёрное дерево используется для организации сравнимых данных, таких как фрагменты текста или числа. Листовые 
+узлы красно-чёрных деревьев не содержат данных, благодаря чему не требуют выделения памяти — достаточно записать в 
+узле-предке в качестве указателя на потомка нулевой указатель. Однако в некоторых реализациях для упрощения 
+алгоритма могут использоваться явные листовые узлы.   
+
+<img src="./art/Red-black_tree_example_with_NIL.svg.png" alt="rbtree">
+
+Красно-чёрное дерево является структурой данных, представляющей собой бинарное дерево поиска, также известное как 
+2-3-4 дерево или симметричное мультипликативное дерево, используемой для хранения и 
+упорядочивания элементов, и который обладает следующими свойствами: 
+
+- Каждый узел может быть красным или черным.
+- Корень дерева всегда черный.
+- Каждый лист дерева (NULL) также является черным.
+- Если узел красный, то его дочерние узлы должны быть черными (обратное правило может быть нарушено).
+- Для каждого узла все пути от него до листьев содержат одинаковое количество черных узлов.
+
+Код на Python для красно-черного дерева:
+
+```python
+class Node(object):
+    """Узел дерева"""
+    def __init__(self, key, color="red"):
+        self.key = key
+        self.left = None
+        self.right = None
+        self.parent = None
+        self.color = color
+
+class RedBlackTree(object):
+    """Красно-черное дерево"""
+    def __init__(self):
+        self.nil = Node(None, "black")
+        self.nil.left = self.nil.right = self.nil.parent = self.nil
+        self.root = self.nil
+
+    def insert(self, key):
+        """Добавление элемента"""
+        new_node = Node(key)
+        y = self.nil
+        x = self.root
+        # Поиск места вставки нового узла
+        while x != self.nil:
+            y = x
+            if new_node.key < x.key:
+                x = x.left
+            else:
+                x = x.right
+        new_node.parent = y
+        if y == self.nil:
+            self.root = new_node
+        elif new_node.key < y.key:
+            y.left = new_node
+        else:
+            y.right = new_node
+        new_node.left = new_node.right = self.nil
+        new_node.color = "red"
+        self.insert_fixup(new_node)
+
+    def insert_fixup(self, z):
+        """Восстановление свойств дерева"""
+        while z.parent.color == "red":
+            if z.parent == z.parent.parent.left:
+                y = z.parent.parent.right
+                if y.color == "red":
+                    z.parent.color = y.color = "black"
+                    z.parent.parent.color = "red"
+                    z = z.parent.parent
+                else:
+                    if z == z.parent.right:
+                        z = z.parent
+                        self.left_rotate(z)
+                    z.parent.color = "black"
+                    z.parent.parent.color = "red"
+                    self.right_rotate(z.parent.parent)
+            else:
+                y = z.parent.parent.left
+                if y.color == "red":
+                    z.parent.color = y.color = "black"
+                    z.parent.parent.color = "red"
+                    z = z.parent.parent
+                else:
+                    if z == z.parent.left:
+                        z = z.parent
+                        self.right_rotate(z)
+                    z.parent.color = "black"
+                    z.parent.parent.color = "red"
+                    self.left_rotate(z.parent.parent)
+        self.root.color = "black"
+
+    def left_rotate(self, x):
+        """Левый поворот"""
+        y = x.right
+        x.right = y.left
+        if y.left != self.nil:
+            y.left.parent = x
+        y.parent = x.parent
+        if x.parent == self.nil:
+            self.root = y
+        elif x == x.parent.left:
+            x.parent.left = y
+        else:
+            x.parent.right = y
+        y.left = x
+        x.parent = y
+
+    def right_rotate(self, x):
+        """Правый поворот"""
+        y = x.left
+        x.left = y.right
+        if y.right != self.nil:
+            y.right.parent = x
+        y.parent = x.parent
+        if x.parent == self.nil:
+            self.root = y
+        elif x == x.parent.right:
+            x.parent.right = y
+        else:
+            x.parent.left = y
+        y.right = x
+        x.parent = y
+
+    def delete(self, key):
+        """Удаление элемента"""
+        z = self.search(key)
+        if z != self.nil:
+            y = z
+            y_original_color = y.color
+            if z.left == self.nil:
+                x = z.right
+                self.transplant(z, z.right)
+            elif z.right == self.nil:
+                x = z.left
+                self.transplant(z, z.left)
+            else:
+                y = self.minimum(z.right)
+                y_original_color = y.color
+                x = y.right
+                if y.parent == z:
+                    x.parent = y
+                else:
+                    self.transplant(y, y.right)
+                    y.right = z.right
+                    y.right.parent = y
+                self.transplant(z, y)
+                y.left = z.left
+                y.left.parent = y
+                y.color = z.color
+            if y_original_color == "black":
+                self.delete_fixup(x)
+
+    def delete_fixup(self, x):
+        """Восстановление свойств дерева"""
+        while x != self.root and x.color == "black":
+            if x == x.parent.left:
+                w = x.parent.right
+                if w.color == "red":
+                    w.color = "black"
+                    x.parent.color = "red"
+                    self.left_rotate(x.parent)
+                    w = x.parent.right
+                if w.left.color == "black" and w.right.color == "black":
+                    w.color = "red"
+                    x = x.parent
+                else:
+                    if w.right.color == "black":
+                        w.left.color = "black"
+                        w.color = "red"
+                        self.right_rotate(w)
+                        w = x.parent.right
+                    w.color = x.parent.color
+                    x.parent.color = "black"
+                    w.right.color = "black"
+                    self.left_rotate(x.parent)
+                    x = self.root
+            else:
+                w = x.parent.left
+                if w.color == "red":
+                    w.color = "black"
+                    x.parent.color = "red"
+                    self.right_rotate(x.parent)
+                    w = x.parent.left
+                if w.right.color == "black" and w.left.color == "black":
+                    w.color = "red"
+                    x = x.parent
+                else:
+                    if w.left.color == "black":
+                        w.right.color = "black"
+                        w.color = "red"
+                        self.left_rotate(w)
+                        w = x.parent.left
+                    w.color = x.parent.color
+                    x.parent.color = "black"
+                    w.left.color = "black"
+                    self.right_rotate(x.parent)
+                    x = self.root
+        x.color = "black"
+
+    def transplant(self, u, v):
+        """Замена узла"""
+        if u.parent == self.nil:
+            self.root = v
+        elif u == u.parent.left:
+            u.parent.left = v
+        else:
+            u.parent.right = v
+        v.parent = u.parent
+
+    def search(self, key):
+        """Поиск элемента"""
+        x = self.root
+        while x != self.nil and x.key != key:
+            if key < x.key:
+                x = x.left
+            else:
+                x = x.right
+        return x
+
+    def minimum(self, x=None):
+        """Поиск минимального элемента"""
+        if x is None:
+            x = self.root
+        while x.left != self.nil:
+            x = x.left
+        return x
+
+    def maximum(self, x=None):
+        """Поиск максимального элемента"""
+        if x is None:
+            x = self.root
+        while x.right != self.nil:
+            x = x.right
+        return x
+
+    def inorder_walk(self, node=None):
+        """Обход узлов в порядке возрастания ключей"""
+        if node is None:
+            node = self.root
+        if node != self.nil:
+            for x in self.inorder_walk(node.left):
+                yield x
+            yield node.key
+            for x in self.inorder_walk(node.right):
+                yield x
+
+    def __iter__(self):
+        return self.inorder_walk()
+```
+
+#### Косое дерево
+Наихудшая временная сложность таких операций, как поиск, удаление и вставка, для двоичного дерева поиска (Binary 
+Search Tree) составляет O(n). Наихудший случай случай возникает, когда дерево несбалансировано. Мы можем улучшить 
+наихудший результат временной сложности до O(log n) с помощью красно-черных и АВЛ-деревьев.   
+
+Можем ли мы добиться на практике лучшего результата, чем тот, что нам дают красно-черные или АВЛ-деревья?
+
+Подобно красно-черным и АВЛ-деревьям, Splay-дерево (или косое дерево) также является самобалансирующимся бинарным 
+деревом поиска. Основная идея splay-дерева состоит в том, чтобы помещать элемент, к которому недавно осуществлялся 
+доступ, в корень дерева, что делает этот элемент, доступным за время порядка O(1) при повторном доступе. Вся суть 
+заключается в том, чтобы использовать концепцию локальности ссылок (в среднестатистическом приложении 80% обращений 
+приходятся на 20% элементов). Представьте себе ситуацию, когда у нас есть миллионы или даже миллиарды ключей, и лишь 
+к некоторым из них обращаются регулярно, что весьма вероятно для многих типичных приложениях.     
+
+Все операции со splay-деревом выполняются в среднем за время порядка O(log n), где n - количество элементов в дереве.
+Любая отдельная операция в худшем случае может занять время порядка Тэта(n). 
+ 
+ 
+Операция поиска в splay-дереве представляет собой стандартный алгоритм поиска в бинарном дереве, после которого 
+дерево выворачивается (искомый узел перемещается в корень — операция splay). Если поиск завершился успехом, то 
+найденный узел поднимается наверх и становится новым корнем. В противном случае корнем становится последний узел, к 
+которому был осуществлен доступ до достижения NULL.    
+
+Расширяющееся (англ. splay tree) или косое дерево является двоичным деревом поиска, в котором поддерживается 
+свойство сбалансированности. Это дерево принадлежит классу «саморегулирующихся деревьев», которые поддерживают 
+необходимый баланс ветвления дерева, чтобы обеспечить выполнение операций поиска, добавления и удаления за 
+логарифмическое время от числа хранимых элементов. Это реализуется без использования каких-либо дополнительных полей 
+в узлах дерева (как, например, в Красно-чёрных деревьях или АВЛ-деревьях, где в вершинах хранится, соответственно, 
+цвет вершины и глубина поддерева). Вместо этого «расширяющие операции» (splay operation), частью которых являются 
+вращения, выполняются при каждом обращении к дереву.       
+
+
+Расширяющееся дерево придумали Роберт Тарьян и Даниель Слейтор в 1983 году.
+
+```python
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left_child = None
+        self.right_child = None
+ 
+class SkewedBinaryTree:
+    def __init__(self, values):
+        self.root = None
+        self.build_tree(values)
+ 
+    def build_tree(self, values):
+        for value in values:
+            node = Node(value)
+            if self.root is None:
+                self.root = node
+            else:
+                self.insert_node(node, self.root)
+    
+    def insert_node(self, node, current_node):
+        if node.value > current_node.value:
+            if current_node.right_child is None:
+                current_node.right_child = node
+            else:
+                self.insert_node(node, current_node.right_child)
+        else:
+            if current_node.left_child is None:
+                current_node.left_child = node
+            else:
+                self.insert_node(node, current_node.left_child)
+```
+
+#### Список с пропусками
+Список с пропусками (англ. Skip List) — вероятностная структура данных, основанная на нескольких параллельных 
+отсортированных связных списках с эффективностью, сравнимой с двоичным деревом (порядка O(log n) среднее время для 
+большинства операций). 
+
+В основе списка с пропусками лежит расширение отсортированного связного списка дополнительными связями, добавленными 
+в случайных путях с геометрическим/негативным биномиальным распределением, таким образом, чтобы поиск по списку 
+мог быстро пропускать части этого списка. Вставка, поиск и удаление выполняются за логарифмическое случайное время.   
+
+Для создания списка с пропусками в Python можно использовать формирование списка с помощью лист-понимания (list 
+comprehension) и функции range(). Например, если требуется создать список с 10 элементами, где каждый второй элемент 
+является пропуском, можно написать следующий код:  
+
+```python
+my_list = [i if i % 2 == 0 else None for i in range(10)]
+# Используется функция range() для создания последовательности чисел от 0 до 9.
+# Если число четное, то оно добавляется в список. Если нечетное, то добавляется пропуск (None).
+# Результатом выполнения кода является созданный список с пропусками.
+
+# Таким образом, результатом выполнения этого кода будет список с элементами: 
+# [0, None, 2, None, 4, None, 6, None, 8, None].
+
+```
+
+В этом коде используется лист-понимания для создания списка. Функция range(10) возвращает последовательность 
+чисел от 0 до 9. Оператор if i % 2 == 0 используется для проверки того, является ли текущий элемент четным числом 
+или нет. Если элемент четный, то он добавляется в список, иначе добавляется пропуск (None).  
+
+#### Trie, или нагруженное дерево
+Trie, или нагруженное дерево  — структура данных реализующая интерфейс ассоциативного массива, то есть позволяющая 
+хранить пары «ключ-значение». Сразу следует оговорится, что в большинстве случаев ключами выступают строки, однако в 
+качестве ключей можно использовать любые типы данных, представимые как последовательность байт (то есть вообще любые).  
+
+
+Нагруженное дерево отличается от обычных n-арных деревьев тем, что в его узлах не хранятся ключи. Вместо них в узлах 
+хранятся односимвольные метки, а ключем, который соответствует некоему узлу является путь от корня дерева до этого 
+узла, а точнее строка составленная из меток узлов, повстречавшихся на этом пути. В таком случае корень дерева, 
+очевидно, соответствует пустому ключу.   
+
+TRIE (также известный как префиксное дерево или бор) - это древовидная структура данных для хранения и поиска 
+множества строк. Он позволяет выполнять операции поиска, вставки и удаления строк в среднем за время, 
+пропорциональное длине строки. Каждый узел дерева содержит один символ строки вместе с указателем на следующий узел 
+в этой строке.   
+
+Вот пример реализации TRIE в Python:
+```python
+# Класс Node представляет узел дерева, каждый из которых может иметь несколько дочерних узлов. Атрибут word_end 
+# определяет, является ли данный узел концом строки. 
+
+
+class Node:
+    def __init__(self):
+        self.children = {} # словарь дочерних узлов
+        self.word_end = False # флаг конца слова
+
+# Класс Trie использует класс Node для создания TRIE. Метод insert вставляет новое слово в TRIE дерево, а методы 
+# search и startsWith производят поиск соответствующих слов или префиксов в дереве. 
+class Trie:
+    def __init__(self):
+        self.root = Node() # создаем корень дерева
+    
+    def insert(self, word: str) -> None:
+        node = self.root
+        for char in word:
+            # если узел для текущего символа не существует, то создаем его
+            if char not in node.children:
+                node.children[char] = Node()
+            node = node.children[char]
+        node.word_end = True # помечаем конец слова
+
+    def search(self, word: str) -> bool:
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return node.word_end # возвращаем True, если слово найдено
+
+    def startsWith(self, prefix: str) -> bool:
+        node = self.root
+        for char in prefix:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return True # возвращаем True, если существует хотя бы одно слово с таким префиксом
+
+
+# Пример использования:
+
+trie = Trie()
+words = ["apple", "banana", "cat", "dog"]
+
+# вставляем слова в дерево
+for word in words:
+    trie.insert(word)
+    
+# проверяем, существуют ли слова в дереве
+print(trie.search("banana")) # True
+print(trie.search("elephant")) # False
+
+# проверяем, существуют ли слова с заданным префиксом в дереве
+print(trie.startsWith("ap")) # True
+print(trie.startsWith("d")) # True
+print(trie.startsWith("f")) # False
+
+```
+
